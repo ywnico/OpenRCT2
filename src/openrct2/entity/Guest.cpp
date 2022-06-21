@@ -6971,6 +6971,8 @@ static constexpr const uint8_t tshirt_colours[] = {
 };
 // clang-format on
 
+static constexpr const uint8_t numSkintones = 5;
+
 /**
  *
  *  rct2: 0x0069A05D
@@ -7130,6 +7132,9 @@ Guest* Guest::Generate(const CoordsXYZ& coords)
 
     uint8_t trousersColour = static_cast<uint8_t>(scenario_rand() % std::size(trouser_colours));
     peep->TrousersColour = trouser_colours[trousersColour];
+
+    uint8_t skintone = static_cast<uint8_t>(scenario_rand() % numSkintones);
+    peep->Skintone = skintone;
 
     /* Minimum energy is capped at 32 and maximum at 128, so this initialises
      * a peep with approx 34%-100% energy. (65 - 32) / (128 - 32) ≈ 34% */

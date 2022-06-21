@@ -324,6 +324,7 @@ struct Peep : EntityBase
     PeepSpriteType SpriteType;
     uint8_t TshirtColour;
     uint8_t TrousersColour;
+    uint8_t Skintone;
     uint16_t DestinationX; // Location that the peep is trying to get to
     uint16_t DestinationY;
     uint8_t DestinationTolerance; // How close to destination before next action/state 0 = exact

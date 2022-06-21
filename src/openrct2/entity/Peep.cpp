@@ -2702,6 +2702,7 @@ void Peep::Serialise(DataSerialiser& stream)
     stream << SpriteType;
     stream << TshirtColour;
     stream << TrousersColour;
+    stream << Skintone;
     stream << DestinationX;
     stream << DestinationY;
     stream << DestinationTolerance;
@@ -2780,13 +2781,11 @@ void Peep::Paint(paint_session& session, int32_t imageDirection) const
         imageOffset = 0;
     }
 
-    uint8_t skintone = 2; // TODO GET PROGRAMMATICALLY
-
     // In the following 4 calls to PaintAddImageAsParent/PaintAddImageAsChild, we add 5 (instead of 3) to the
     //  bound_box_offset_z to make sure peeps are drawn on top of railways
     uint32_t baseImageId = (imageDirection >> 3) + GetPeepAnimation(SpriteType, actionSpriteType).base_image + imageOffset * 4;
     uint32_t imageIdNum = baseImageId | TshirtColour << 19 | TrousersColour << 24 | IMAGE_TYPE_REMAP | IMAGE_TYPE_REMAP_2_PLUS;
-    ImageId imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(skintone);
+    ImageId imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(Skintone);
     PaintAddImageAsParent(session, imageId, { 0, 0, z }, { 1, 1, 11 }, { 0, 0, z + 5 });
 
     auto* guest = As<Guest>();
@@ -2795,7 +2794,7 @@ void Peep::Paint(paint_session& session, int32_t imageDirection) const
         if (baseImageId >= 10717 && baseImageId < 10749)
         {
             imageIdNum = (baseImageId + 32) | guest->HatColour << 19 | IMAGE_TYPE_REMAP;
-            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(skintone);
+            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(Skintone);
             PaintAddImageAsChild(session, imageId, { 0, 0, z }, { 1, 1, 11 }, { 0, 0, z + 5 });
             return;
         }
@@ -2803,7 +2802,7 @@ void Peep::Paint(paint_session& session, int32_t imageDirection) const
         if (baseImageId >= 10781 && baseImageId < 10813)
         {
             imageIdNum = (baseImageId + 32) | guest->BalloonColour << 19 | IMAGE_TYPE_REMAP;
-            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(skintone);
+            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(Skintone);
             PaintAddImageAsChild(session, imageId, { 0, 0, z }, { 1, 1, 11 }, { 0, 0, z + 5 });
             return;
         }
@@ -2811,7 +2810,7 @@ void Peep::Paint(paint_session& session, int32_t imageDirection) const
         if (baseImageId >= 11197 && baseImageId < 11229)
         {
             imageIdNum = (baseImageId + 32) | guest->UmbrellaColour << 19 | IMAGE_TYPE_REMAP;
-            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(skintone);
+            imageId = ImageId::FromUInt32(imageIdNum).WithSkintone(Skintone);
             PaintAddImageAsChild(session, imageId, { 0, 0, z }, { 1, 1, 11 }, { 0, 0, z + 5 });
             return;
         }
