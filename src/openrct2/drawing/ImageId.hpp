@@ -73,7 +73,7 @@ private:
     uint8_t _tertiary = 0;
     uint8_t _flags = 0;
 
-    uint8_t _skintone = 0;
+    uint8_t _skintone = 0xFF;
 
 public:
     static ImageId FromUInt32(uint32_t value)

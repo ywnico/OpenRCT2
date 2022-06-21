@@ -399,7 +399,7 @@ static std::optional<PaletteMap> FASTCALL gfx_draw_sprite_get_palette(ImageId im
         return GetPaletteMapForColour(paletteId);
     }
 
-    auto paletteMap = PaletteMap(gPeepPalette0);
+    auto paletteMap = PaletteMap(gOtherPalette);
     // skin tone
     uint8_t skintone = imageId.GetSkintone();
     if (skintone == 0) {
