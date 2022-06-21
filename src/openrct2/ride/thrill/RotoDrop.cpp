@@ -63,6 +63,8 @@ void vehicle_visual_roto_drop(
     {
         uint8_t riding_peep_sprites[64];
         std::fill_n(riding_peep_sprites, sizeof(riding_peep_sprites), 0xFF);
+        uint8_t riding_peep_skintones[64];
+        std::fill_n(riding_peep_skintones, sizeof(riding_peep_skintones), 0xFF);
         for (int32_t i = 0; i < vehicle->num_peeps; i++)
         {
             uint8_t cl = (i & 3) * 16;
@@ -71,6 +73,7 @@ void vehicle_visual_roto_drop(
             cl += (imageDirection / 8) * 16;
             cl &= 0x3F;
             riding_peep_sprites[cl] = vehicle->peep_tshirt_colours[i];
+            riding_peep_skintones[cl] = vehicle->peep_skintones[i];
         }
 
         // Draw riding peep sprites in back to front order:
@@ -86,7 +89,8 @@ void vehicle_visual_roto_drop(
                     baseImage_id += vehicle->restraints_position / 64;
                 }
                 image_id = baseImage_id | SPRITE_ID_PALETTE_COLOUR_1(riding_peep_sprites[i]);
-                PaintAddImageAsChild(session, image_id, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
+                ImageId image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(riding_peep_skintones[i]);
+                PaintAddImageAsChild(session, image_id_obj, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
             }
         }
     }

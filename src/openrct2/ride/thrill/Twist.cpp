@@ -65,7 +65,8 @@ static void paint_twist_structure(
     {
         for (int32_t i = 0; i < vehicle->num_peeps; i += 2)
         {
-            imageTemplate = ImageId(0, vehicle->peep_tshirt_colours[i], vehicle->peep_tshirt_colours[i + 1]);
+            imageTemplate = ImageId(0, vehicle->peep_tshirt_colours[i], vehicle->peep_tshirt_colours[i + 1])
+                .WithSkintone(vehicle->peep_skintones[i]);
             auto peepFrameNum = (frameNum + i * 12) % 216;
             imageId = imageId.WithIndex(baseImageId + 24 + peepFrameNum);
             PaintAddImageAsChild(

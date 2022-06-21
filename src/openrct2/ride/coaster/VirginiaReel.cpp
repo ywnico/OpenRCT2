@@ -200,9 +200,11 @@ void vehicle_visual_virginia_reel(
     if (session.DPI.zoom_level < ZoomLevel{ 2 } && vehicle->num_peeps > 0 && !vehicle->IsGhost())
     {
         uint8_t riding_peep_sprites[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
+        uint8_t riding_peep_skintones[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
         for (int32_t i = 0; i < vehicle->num_peeps; i++)
         {
             riding_peep_sprites[((ecx / 8) + i) & 3] = vehicle->peep_tshirt_colours[i];
+            riding_peep_skintones[((ecx / 8) + i) & 3] = vehicle->peep_skintones[i];
         }
         int32_t draw_order[4] = { 0, 1, 3, 2 };
         for (auto i : draw_order)
@@ -210,8 +212,9 @@ void vehicle_visual_virginia_reel(
             if (riding_peep_sprites[i] != 0xFF)
             {
                 image_id = (baseImage_id + ((i + 1) * 72)) | SPRITE_ID_PALETTE_COLOUR_1(riding_peep_sprites[i]);
+                ImageId image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(riding_peep_skintones[i]);
                 PaintAddImageAsChild(
-                    session, image_id, { 0, 0, z }, { bb->length_x, bb->length_y, bb->length_z },
+                    session, image_id_obj, { 0, 0, z }, { bb->length_x, bb->length_y, bb->length_z },
                     { bb->offset_x, bb->offset_y, bb->offset_z + z });
             }
         }

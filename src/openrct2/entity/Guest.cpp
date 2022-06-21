@@ -2477,6 +2477,7 @@ static void peep_choose_seat_from_car(Peep* peep, Ride* ride, Vehicle* vehicle)
 
     vehicle->peep[peep->CurrentSeat] = peep->sprite_index;
     vehicle->peep_tshirt_colours[peep->CurrentSeat] = peep->TshirtColour;
+    vehicle->peep_skintones[peep->CurrentSeat] = peep->Skintone;
 }
 
 /**
@@ -4669,6 +4670,7 @@ void Guest::UpdateRideOnSpiralSlide()
                 ride->slide_in_use++;
                 ride->slide_peep = sprite_index;
                 ride->slide_peep_t_shirt_colour = TshirtColour;
+                ride->slide_peep_skintone = Skintone;
                 ride->spiral_slide_progress = 0;
                 destination.x++;
 

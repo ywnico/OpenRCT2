@@ -153,6 +153,7 @@ struct Vehicle : EntityBase
     uint8_t sub_state;
     EntityId peep[32];
     uint8_t peep_tshirt_colours[32];
+    uint8_t peep_skintones[32];
     uint8_t num_seats;
     uint8_t num_peeps;
     uint8_t next_free_seat;

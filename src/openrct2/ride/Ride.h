@@ -214,6 +214,7 @@ struct Ride
         uint16_t maze_tiles;
     };
     uint8_t slide_peep_t_shirt_colour;
+    uint8_t slide_peep_skintone;
     uint8_t spiral_slide_progress;
     int32_t build_date;
     money16 upkeep_cost;

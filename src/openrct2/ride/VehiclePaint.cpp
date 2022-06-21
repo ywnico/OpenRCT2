@@ -946,7 +946,9 @@ static void PaintVehicleRiders(
 
             auto peepColour0 = vehicle->peep_tshirt_colours[i * 2];
             auto peepColour1 = vehicle->peep_tshirt_colours[(i * 2) + 1];
-            auto imageId = ImageId(offsetImageId, peepColour0, peepColour1);
+            auto peepSkintone0 = vehicle->peep_skintones[i * 2];
+            //auto peepSkintone1 = vehicle->peep_skintones[(i * 2) + 1]; // adjacent peeps will both have to use peepSkintone0
+            auto imageId = ImageId(offsetImageId, peepColour0, peepColour1).WithSkintone(peepSkintone0);
             if (vehicle->IsGhost())
             {
                 imageId = ImageId(offsetImageId).WithRemap(FilterPaletteID::Palette44);

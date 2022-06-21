@@ -35,7 +35,7 @@ static void PaintEnterpriseRiders(
 
         auto frameOffset1 = ((imageOffset % 4) * 4 + (i * 4) % 15) & 0x0F;
         auto frameOffset2 = floor2(imageOffset, 4) * 4;
-        auto imageTemplate = ImageId(0, vehicle.peep_tshirt_colours[i]);
+        auto imageTemplate = ImageId(0, vehicle.peep_tshirt_colours[i]).WithSkintone(vehicle.peep_skintones[i]);
         auto imageId = imageTemplate.WithIndex(baseImageIndex + 196 + frameOffset1 + frameOffset2);
         PaintAddImageAsChild(session, imageId, offset, bbLength, bbOffset);
     }

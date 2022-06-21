@@ -47,7 +47,8 @@ static void PaintTopSpinRiders(
         {
             auto imageIndex = seatImageIndex + ((i + 1) * 76);
             auto imageId = ImageId(
-                imageIndex, vehicle.peep_tshirt_colours[peepIndex], vehicle.peep_tshirt_colours[peepIndex + 1]);
+                imageIndex, vehicle.peep_tshirt_colours[peepIndex], vehicle.peep_tshirt_colours[peepIndex + 1])
+                .WithSkintone(vehicle.peep_skintones[peepIndex]);
             PaintAddImageAsChild(session, imageId, seatCoords, bbLength, bbOffset);
         }
         else

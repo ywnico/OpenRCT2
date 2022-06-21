@@ -83,7 +83,8 @@ static void PaintSwingingShipRiders(
 
             auto frameNum = 1 + (row * 2) + ((direction >> 1) ^ col);
             auto imageIndex = baseImageIndex + frameNum;
-            auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[peep], vehicle.peep_tshirt_colours[peep + 1]);
+            auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[peep], vehicle.peep_tshirt_colours[peep + 1])
+                .WithSkintone(vehicle.peep_skintones[peep]);
             PaintAddImageAsChild(session, imageId, offset, bbLength, bbOffset);
 
             peep += 2;

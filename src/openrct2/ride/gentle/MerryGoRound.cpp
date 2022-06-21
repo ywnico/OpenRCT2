@@ -45,7 +45,8 @@ static void PaintRiders(
             continue;
 
         auto imageIndex = rideEntry.vehicles[0].base_image_id + 32 + imageOffset;
-        auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[peep], vehicle.peep_tshirt_colours[peep + 1]);
+        auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[peep], vehicle.peep_tshirt_colours[peep + 1])
+            .WithSkintone(vehicle.peep_skintones[peep]);
         PaintAddImageAsChild(session, imageId, offset, bbLength, bbOffset);
     }
 }

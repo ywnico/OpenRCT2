@@ -9837,6 +9837,7 @@ void Vehicle::Serialise(DataSerialiser& stream)
     stream << sub_state;
     stream << peep;
     stream << peep_tshirt_colours;
+    stream << peep_skintones;
     stream << num_seats;
     stream << num_peeps;
     stream << next_free_seat;

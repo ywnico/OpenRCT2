@@ -59,24 +59,28 @@ void vehicle_visual_launched_freefall(
         auto directionOffset = imageDirection / 8;
         image_id = (baseImage_id + (((directionOffset + 0) & 3) * 3))
             | SPRITE_ID_PALETTE_COLOUR_2(vehicle->peep_tshirt_colours[0], vehicle->peep_tshirt_colours[1]);
-        PaintAddImageAsChild(session, image_id, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
+        ImageId image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(vehicle->peep_skintones[0]);
+        PaintAddImageAsChild(session, image_id_obj, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
         if (vehicle->num_peeps > 2)
         {
             image_id = (baseImage_id + (((directionOffset + 1) & 3) * 3))
                 | SPRITE_ID_PALETTE_COLOUR_2(vehicle->peep_tshirt_colours[2], vehicle->peep_tshirt_colours[3]);
-            PaintAddImageAsChild(session, image_id, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
+            image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(vehicle->peep_skintones[2]);
+            PaintAddImageAsChild(session, image_id_obj, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
         }
         if (vehicle->num_peeps > 4)
         {
             image_id = (baseImage_id + (((directionOffset + 2) & 3) * 3))
                 | SPRITE_ID_PALETTE_COLOUR_2(vehicle->peep_tshirt_colours[4], vehicle->peep_tshirt_colours[5]);
-            PaintAddImageAsChild(session, image_id, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
+            image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(vehicle->peep_skintones[4]);
+            PaintAddImageAsChild(session, image_id_obj, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
         }
         if (vehicle->num_peeps > 6)
         {
             image_id = (baseImage_id + (((directionOffset + 3) & 3) * 3))
                 | SPRITE_ID_PALETTE_COLOUR_2(vehicle->peep_tshirt_colours[6], vehicle->peep_tshirt_colours[7]);
-            PaintAddImageAsChild(session, image_id, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
+            image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(vehicle->peep_skintones[6]);
+            PaintAddImageAsChild(session, image_id_obj, { 0, 0, z }, { 16, 16, 41 }, { -5, -5, z + 1 });
         }
     }
 

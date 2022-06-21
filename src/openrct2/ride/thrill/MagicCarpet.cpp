@@ -115,7 +115,8 @@ static void PaintMagicCarpetRiders(
     {
         auto imageIndex = baseImageIndex + (peepIndex * 2);
         auto imageId = ImageId(
-            imageIndex, vehicle.peep_tshirt_colours[peepIndex + 0], vehicle.peep_tshirt_colours[peepIndex + 1]);
+            imageIndex, vehicle.peep_tshirt_colours[peepIndex + 0], vehicle.peep_tshirt_colours[peepIndex + 1])
+            .WithSkintone(vehicle.peep_skintones[peepIndex + 0]);
         PaintAddImageAsChild(session, imageId, offset, bbSize, bbOffset);
     }
 }

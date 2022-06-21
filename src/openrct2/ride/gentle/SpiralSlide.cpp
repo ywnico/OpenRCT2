@@ -171,8 +171,9 @@ static void spiral_slide_paint_tile_front(
             }
 
             image_id = (offset + slide_progress) | (ride.slide_peep_t_shirt_colour << 19) | (1 << 29);
+            ImageId imageId = ImageId::FromUInt32(image_id).WithSkintone(ride.slide_peep_skintone);
 
-            PaintAddImageAsChild(session, image_id, { 16, 16, height }, boundingBox, boundingBoxOffset);
+            PaintAddImageAsChild(session, imageId, { 16, 16, height }, boundingBox, boundingBoxOffset);
         }
     }
 }

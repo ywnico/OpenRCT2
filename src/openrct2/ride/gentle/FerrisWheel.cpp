@@ -58,7 +58,8 @@ static void PaintFerrisWheelRiders(
 
         auto frameNum = (vehicle.Pitch + i * 4) % 128;
         auto imageIndex = rideEntry.vehicles[0].base_image_id + 32 + direction * 128 + frameNum;
-        auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[i], vehicle.peep_tshirt_colours[i + 1]);
+        auto imageId = ImageId(imageIndex, vehicle.peep_tshirt_colours[i], vehicle.peep_tshirt_colours[i + 1])
+            .WithSkintone(vehicle.peep_skintones[i]);
         PaintAddImageAsChild(session, imageId, offset, bbLength, bbOffset);
     }
 }
