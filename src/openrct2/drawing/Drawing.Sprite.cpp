@@ -399,7 +399,7 @@ static std::optional<PaletteMap> FASTCALL gfx_draw_sprite_get_palette(ImageId im
         return GetPaletteMapForColour(paletteId);
     }
 
-    auto paletteMap = PaletteMap(gPeepPalette);
+    auto paletteMap = PaletteMap(gPeepPalette2);
     if (imageId.HasTertiary())
     {
         paletteMap = PaletteMap(gOtherPalette);
