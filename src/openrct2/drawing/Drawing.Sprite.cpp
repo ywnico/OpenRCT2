@@ -399,7 +399,21 @@ static std::optional<PaletteMap> FASTCALL gfx_draw_sprite_get_palette(ImageId im
         return GetPaletteMapForColour(paletteId);
     }
 
-    auto paletteMap = PaletteMap(gPeepPalette2);
+    auto paletteMap = PaletteMap(gPeepPalette0);
+    // skin tone
+    uint8_t skintone = imageId.GetSkintone();
+    if (skintone == 0) {
+        paletteMap = PaletteMap(gPeepPalette0);
+    } else if (skintone == 1) {
+        paletteMap = PaletteMap(gPeepPalette1);
+    } else if (skintone == 2) {
+        paletteMap = PaletteMap(gPeepPalette2);
+    } else if (skintone == 3) {
+        paletteMap = PaletteMap(gPeepPalette3);
+    } else if (skintone == 4) {
+        paletteMap = PaletteMap(gPeepPalette4);
+    }
+
     if (imageId.HasTertiary())
     {
         paletteMap = PaletteMap(gOtherPalette);

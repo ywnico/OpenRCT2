@@ -73,6 +73,8 @@ private:
     uint8_t _tertiary = 0;
     uint8_t _flags = 0;
 
+    uint8_t _skintone = 0;
+
 public:
     static ImageId FromUInt32(uint32_t value)
     {
@@ -90,6 +92,7 @@ public:
             result._flags |= NEW_FLAG_BLEND;
         if (value & FLAG_SECONDARY)
             result._flags |= NEW_FLAG_SECONDARY;
+
         assert(result.ToUInt32() == value);
         return result;
     }
@@ -206,6 +209,11 @@ public:
         return _tertiary;
     }
 
+    colour_t GetSkintone() const
+    {
+        return _skintone;
+    }
+
     ImageCatalogue GetCatalogue() const;
 
     constexpr ImageId WithIndex(ImageIndex index) const
@@ -293,5 +301,13 @@ public:
             result._flags &= ~NEW_FLAG_BLEND;
         return result;
     }
+
+    constexpr ImageId WithSkintone(uint8_t skintone) const
+    {
+        ImageId result = *this;
+        result._skintone = skintone;
+        return result;
+    }
+
 };
-static_assert(sizeof(ImageId) == 8);
+static_assert(sizeof(ImageId) == 12);
