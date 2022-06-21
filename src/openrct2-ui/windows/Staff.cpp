@@ -1022,7 +1022,7 @@ void WindowStaffOverviewTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
     }
     ebx += eax;
 
-    gfx_draw_sprite(&clip_dpi, ImageId(ebx, peep->TshirtColour, peep->TrousersColour), screenCoords);
+    gfx_draw_sprite(&clip_dpi, ImageId(ebx, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone), screenCoords);
 }
 
 /**
@@ -1158,7 +1158,7 @@ void WindowStaffOverviewToolUpdate(rct_window* w, rct_widgetindex widgetIndex, c
 
     auto baseImageId = GetPeepAnimation(peep->SpriteType, PeepActionSpriteType::Ui).base_image;
     baseImageId += w->picked_peep_frame >> 2;
-    gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour);
+    gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone);
 }
 
 /**

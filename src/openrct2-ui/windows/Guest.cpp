@@ -735,7 +735,7 @@ static void WindowGuestOverviewTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
     }
     animationFrame += animationFrameOffset;
 
-    auto sprite_id = ImageId(animationFrame, peep->TshirtColour, peep->TrousersColour);
+    auto sprite_id = ImageId(animationFrame, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone);
     gfx_draw_sprite(&clip_dpi, sprite_id, screenCoords);
 
     auto* guest = peep->As<Guest>();
@@ -1124,7 +1124,7 @@ void WindowGuestOverviewToolUpdate(rct_window* w, rct_widgetindex widgetIndex, c
 
     auto baseImageId = GetPeepAnimation(peep->SpriteType, PeepActionSpriteType::Ui).base_image;
     baseImageId += w->picked_peep_frame >> 2;
-    gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour);
+    gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone);
 }
 
 /**
