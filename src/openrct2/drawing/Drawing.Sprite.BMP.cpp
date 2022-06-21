@@ -83,7 +83,7 @@ void FASTCALL gfx_bmp_sprite_to_buffer(rct_drawpixelinfo& dpi, const DrawSpriteA
     auto imageId = args.Image;
 
     // Image uses the palette pointer to remap the colours of the image
-    if (imageId.HasPrimary())
+    if (imageId.HasPrimary() || args.Image.HasSkintone())
     {
         if (imageId.IsBlended())
         {

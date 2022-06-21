@@ -215,7 +215,7 @@ template<DrawBlendOp TBlendOp> static void FASTCALL DrawRLESprite(rct_drawpixeli
  */
 void FASTCALL gfx_rle_sprite_to_buffer(rct_drawpixelinfo& dpi, const DrawSpriteArgs& args)
 {
-    if (args.Image.HasPrimary())
+    if (args.Image.HasPrimary() || args.Image.HasSkintone())
     {
         if (args.Image.IsBlended())
         {

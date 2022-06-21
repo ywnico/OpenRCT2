@@ -796,7 +796,8 @@ static void WindowGuestStatsTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
                 break;
         }
     }
-    gfx_draw_sprite(dpi, ImageId(image_id), screenCoords);
+    ImageId image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(peep->Skintone);
+    gfx_draw_sprite(dpi, image_id_obj, screenCoords);
 }
 
 /**

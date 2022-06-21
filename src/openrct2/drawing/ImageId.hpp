@@ -209,6 +209,11 @@ public:
         return _tertiary;
     }
 
+    bool HasSkintone() const
+    {
+        return (_skintone != 0xFF);
+    }
+
     colour_t GetSkintone() const
     {
         return _skintone;
