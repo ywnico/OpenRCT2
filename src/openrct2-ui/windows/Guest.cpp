@@ -856,6 +856,12 @@ static void WindowGuestThoughtsTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
     const auto& widget = w->widgets[WIDX_TAB_5];
     auto screenCoords = w->windowPos + ScreenCoordsXY{ widget.left, widget.top };
 
+    const auto peep = GetGuest(w);
+    if (peep == nullptr)
+    {
+        return;
+    }
+
     int32_t image_id = SPR_TAB_THOUGHTS_0;
 
     if (w->page == WINDOW_GUEST_THOUGHTS)
@@ -863,7 +869,7 @@ static void WindowGuestThoughtsTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
         image_id += (w->frame_no / 2) & 0x7;
     }
 
-    gfx_draw_sprite(dpi, ImageId(image_id), screenCoords);
+    gfx_draw_sprite(dpi, ImageId(image_id).WithSkintone(peep->Skintone), screenCoords);
 }
 
 /**
@@ -878,7 +884,13 @@ static void WindowGuestInventoryTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
     const auto& widget = w->widgets[WIDX_TAB_6];
     auto screenCoords = w->windowPos + ScreenCoordsXY{ widget.left, widget.top };
 
-    gfx_draw_sprite(dpi, ImageId(SPR_TAB_GUEST_INVENTORY), screenCoords);
+    const auto peep = GetGuest(w);
+    if (peep == nullptr)
+    {
+        return;
+    }
+
+    gfx_draw_sprite(dpi, ImageId(SPR_TAB_GUEST_INVENTORY).WithSkintone(peep->Skintone), screenCoords);
 }
 
 static void WindowGuestDebugTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
