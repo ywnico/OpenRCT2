@@ -501,6 +501,16 @@ void game_load_init()
 
     OpenRCT2::Audio::StopTitleMusic();
     gGameSpeed = 1;
+
+    // reset skintones (since they are not saved currently)
+    for (auto peep : EntityList<Guest>())
+    {
+        peep->Skintone = static_cast<uint8_t>(scenario_rand() % PEEP_NUM_SKINTONES);
+    }
+    for (auto peep : EntityList<Staff>())
+    {
+        peep->Skintone = static_cast<uint8_t>(scenario_rand() % PEEP_NUM_SKINTONES);
+    }
 }
 
 void game_load_scripts()
