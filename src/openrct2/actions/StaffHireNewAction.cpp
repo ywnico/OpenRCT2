@@ -203,6 +203,9 @@ GameActions::Result StaffHireNewAction::QueryExecute(bool execute) const
         newPeep->TshirtColour = colour;
         newPeep->TrousersColour = colour;
 
+        uint8_t skintone = static_cast<uint8_t>(scenario_rand() % PEEP_NUM_SKINTONES);
+        newPeep->Skintone = skintone;
+
         // Staff energy determines their walking speed
         newPeep->Energy = 0x60;
         newPeep->EnergyTarget = 0x60;
