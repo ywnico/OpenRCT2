@@ -115,6 +115,7 @@ private:
         size_t NumGuests{};
         FilterArguments Arguments;
         uint8_t Faces[58]{};
+        uint8_t Skintones[58]{};
     };
 
     struct GuestItem
@@ -693,7 +694,7 @@ private:
                 {
                     case GuestViewType::Actions:
                         // Guest face
-                        gfx_draw_sprite(&dpi, ImageId(get_peep_face_sprite_small(peep)), { 118, y + 1 });
+                        gfx_draw_sprite(&dpi, ImageId(get_peep_face_sprite_small(peep)).WithSkintone(peep->Skintone), { 118, y + 1 });
 
                         // Tracking icon
                         if (peep->PeepFlags & PEEP_FLAGS_TRACKING)
@@ -753,7 +754,7 @@ private:
                 for (uint32_t j = 0; j < std::size(group.Faces) && j < group.NumGuests; j++)
                 {
                     gfx_draw_sprite(
-                        &dpi, ImageId(group.Faces[j] + SPR_PEEP_SMALL_FACE_VERY_VERY_UNHAPPY),
+                        &dpi, ImageId(group.Faces[j] + SPR_PEEP_SMALL_FACE_VERY_VERY_UNHAPPY).WithSkintone(group.Skintones[j]),
                         { static_cast<int32_t>(j) * 8, y + 12 });
                 }
 
@@ -855,6 +856,7 @@ private:
             if (group.NumGuests < std::size(group.Faces))
             {
                 group.Faces[group.NumGuests] = get_peep_face_sprite_small(peep) - SPR_PEEP_SMALL_FACE_VERY_VERY_UNHAPPY;
+                group.Skintones[group.NumGuests] = peep->Skintone;
             }
             group.NumGuests++;
         }
