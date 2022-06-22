@@ -200,7 +200,7 @@ void vehicle_visual_virginia_reel(
     if (session.DPI.zoom_level < ZoomLevel{ 2 } && vehicle->num_peeps > 0 && !vehicle->IsGhost())
     {
         uint8_t riding_peep_sprites[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
-        uint8_t riding_peep_skintones[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
+        uint8_t riding_peep_skintones[4] = { SKINTONE_INDEX_NONE, SKINTONE_INDEX_NONE, SKINTONE_INDEX_NONE, SKINTONE_INDEX_NONE };
         for (int32_t i = 0; i < vehicle->num_peeps; i++)
         {
             riding_peep_sprites[((ecx / 8) + i) & 3] = vehicle->peep_tshirt_colours[i];

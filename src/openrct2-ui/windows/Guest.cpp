@@ -796,7 +796,16 @@ static void WindowGuestStatsTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
                 break;
         }
     }
-    ImageId image_id_obj = ImageId::FromUInt32(image_id).WithSkintone(peep->Skintone);
+    ImageId image_id_obj = ImageId::FromUInt32(image_id);
+
+    // Use a different palette on sick and angry faces (until the palette is improved).
+    if (is_sick(peep)) {
+        image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_GREEN);
+    } else if (is_angry(peep)) {
+        image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_NONE);
+    } else {
+        image_id_obj = image_id_obj.WithSkintone(peep->Skintone);
+    }
     gfx_draw_sprite(dpi, image_id_obj, screenCoords);
 }
 

@@ -7248,6 +7248,24 @@ static int32_t get_face_sprite_offset(Guest* peep)
     return offset;
 }
 
+bool is_sick(Guest* peep)
+{
+    int32_t offset = get_face_sprite_offset(peep);
+    if (offset == PEEP_FACE_OFFSET_SICK)
+        return true;
+    if (offset == PEEP_FACE_OFFSET_VERY_SICK)
+        return true;
+    if (offset == PEEP_FACE_OFFSET_VERY_VERY_SICK)
+        return true;
+    return false;
+}
+
+bool is_angry(Guest* peep)
+{
+    int32_t offset = get_face_sprite_offset(peep);
+    return (offset == PEEP_FACE_OFFSET_ANGRY);
+}
+
 /**
  * Function split into large and small sprite
  *  rct2: 0x00698721

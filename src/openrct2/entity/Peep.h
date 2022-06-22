@@ -25,8 +25,6 @@
 #define PEEP_MAX_ENERGY 128
 #define PEEP_MAX_ENERGY_TARGET 255 // Oddly, this differs from max energy!
 
-#define PEEP_NUM_SKINTONES 5
-
 constexpr auto PEEP_CLEARANCE_HEIGHT = 4 * COORDS_Z_STEP;
 
 class Formatter;
@@ -468,6 +466,8 @@ void peep_stop_crowd_noise();
 void peep_update_crowd_noise();
 void peep_update_days_in_queue();
 void peep_applause();
+bool is_sick(Guest* peep);
+bool is_angry(Guest* peep);
 int32_t get_peep_face_sprite_small(Guest* peep);
 int32_t get_peep_face_sprite_large(Guest* peep);
 void peep_sprite_remove(Peep* peep);

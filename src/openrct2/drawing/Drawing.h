@@ -22,6 +22,9 @@
 #include <optional>
 #include <vector>
 
+#define SKINTONE_INDEX_NONE 0xFF
+#define SKINTONE_INDEX_GREEN 0x99
+
 struct ScreenCoordsXY;
 struct ScreenLine;
 struct ScreenRect;
@@ -45,6 +48,8 @@ struct PaletteBGRA
 };
 
 constexpr const auto PALETTE_SIZE = 256;
+
+constexpr const auto PEEP_NUM_SKINTONES = 5;
 
 struct GamePalette
 {
@@ -484,6 +489,7 @@ extern thread_local uint8_t gPeepPalette1[256];
 extern thread_local uint8_t gPeepPalette2[256];
 extern thread_local uint8_t gPeepPalette3[256];
 extern thread_local uint8_t gPeepPalette4[256];
+extern thread_local uint8_t gPeepPaletteGreen[256];
 extern thread_local uint8_t gOtherPalette[256];
 extern uint8_t text_palette[];
 extern const translucent_window_palette TranslucentWindowPalettes[COLOUR_COUNT];

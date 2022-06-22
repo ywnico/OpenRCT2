@@ -64,7 +64,7 @@ void vehicle_visual_roto_drop(
         uint8_t riding_peep_sprites[64];
         std::fill_n(riding_peep_sprites, sizeof(riding_peep_sprites), 0xFF);
         uint8_t riding_peep_skintones[64];
-        std::fill_n(riding_peep_skintones, sizeof(riding_peep_skintones), 0xFF);
+        std::fill_n(riding_peep_skintones, sizeof(riding_peep_skintones), SKINTONE_INDEX_NONE);
         for (int32_t i = 0; i < vehicle->num_peeps; i++)
         {
             uint8_t cl = (i & 3) * 16;

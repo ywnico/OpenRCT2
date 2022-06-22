@@ -693,8 +693,19 @@ private:
                 switch (_selectedView)
                 {
                     case GuestViewType::Actions:
+                        {
                         // Guest face
-                        gfx_draw_sprite(&dpi, ImageId(get_peep_face_sprite_small(peep)).WithSkintone(peep->Skintone), { 118, y + 1 });
+                        ImageId image_id_obj = ImageId::FromUInt32(get_peep_face_sprite_small(peep));
+
+                        // Use a different palette on sick and angry faces (until the palette is improved).
+                        if (is_sick(peep)) {
+                            image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_GREEN);
+                        } else if (is_angry(peep)) {
+                            image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_NONE);
+                        } else {
+                            image_id_obj = image_id_obj.WithSkintone(peep->Skintone);
+                        }
+                        gfx_draw_sprite(&dpi, image_id_obj, { 118, y + 1 });
 
                         // Tracking icon
                         if (peep->PeepFlags & PEEP_FLAGS_TRACKING)
@@ -705,6 +716,7 @@ private:
                         peep->FormatActionTo(ft);
                         DrawTextEllipsised(&dpi, { 133, y }, 314, format, ft);
                         break;
+                        }
                     case GuestViewType::Thoughts:
                         // For each thought
                         for (const auto& thought : peep->Thoughts)
@@ -856,7 +868,15 @@ private:
             if (group.NumGuests < std::size(group.Faces))
             {
                 group.Faces[group.NumGuests] = get_peep_face_sprite_small(peep) - SPR_PEEP_SMALL_FACE_VERY_VERY_UNHAPPY;
-                group.Skintones[group.NumGuests] = peep->Skintone;
+
+                // Use a different palette on sick and angry faces (until the palette is improved).
+                if (is_sick(peep)) {
+                    group.Skintones[group.NumGuests] = SKINTONE_INDEX_GREEN;
+                } else if (is_angry(peep)) {
+                    group.Skintones[group.NumGuests] = SKINTONE_INDEX_NONE;
+                } else {
+                    group.Skintones[group.NumGuests] = peep->Skintone;
+                }
             }
             group.NumGuests++;
         }
