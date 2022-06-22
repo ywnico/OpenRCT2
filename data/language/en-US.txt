@@ -171,8 +171,8 @@ STR_2707    :Use system dialog window
 
 STR_2756    :Remove trash
 
-STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handymen are and consider organizing them better
-STR_2807    :{RED}Guests are complaining about the amount of trash in your park{NEWLINE}Check where your handymen are and consider organizing them better
+STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handypeople are and consider organizing them better
+STR_2807    :{RED}Guests are complaining about the amount of trash in your park{NEWLINE}Check where your handypeople are and consider organizing them better
 STR_2808    :{RED}Guests are complaining about the vandalism in your park{NEWLINE}Check where your security guards are and consider organizing them better
 
 STR_2811    :{RED}Guests are complaining because they can’t find the bathrooms in your park

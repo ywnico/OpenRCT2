@@ -1564,7 +1564,7 @@ STR_2206    :Empty Drink Carton
 STR_2207    :Empty Juice Cup
 STR_2208    :Roast Sausage
 STR_2209    :Empty Bowl
-STR_2210    :Show list of handymen in park
+STR_2210    :Show list of handypeople in park
 STR_2211    :Show list of mechanics in park
 STR_2212    :Show list of security guards in park
 STR_2213    :Show list of entertainers in park
@@ -2002,8 +2002,8 @@ STR_2802    :خريطة
 STR_2803    :Show these guests highlighted on map
 STR_2804    :Show these staff members highlighted on map
 STR_2805    :Show map of park
-STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handymen are and consider organising them better
-STR_2807    :{RED}Guests are complaining about the amount of litter in your park{NEWLINE}Check where your handymen are and consider organising them better
+STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handypeople are and consider organising them better
+STR_2807    :{RED}Guests are complaining about the amount of litter in your park{NEWLINE}Check where your handypeople are and consider organising them better
 STR_2808    :{RED}Guests are complaining about the vandalism in your park{NEWLINE}Check where your security guards are and consider organising them better
 STR_2809    :{RED}Guests are hungry and can’t find anywhere to buy food
 STR_2810    :{RED}Guests are thirsty and can’t find anywhere to buy drinks

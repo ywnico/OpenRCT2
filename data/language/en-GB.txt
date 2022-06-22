@@ -178,7 +178,7 @@ STR_0602    :Roller coaster trains are accelerated out of the station by linear 
 STR_0603    :A wooden style roller coaster with a steel track, allowing for steep drops and inversions.
 STR_0604    :Riders ride single file on a narrow monorail track, as they race through tight inversions and direction changes.
 STR_0767    :Guest {INT32}
-STR_0768    :Handyman {INT32}
+STR_0768    :Handyperson {INT32}
 STR_0769    :Mechanic {INT32}
 STR_0770    :Security Guard {INT32}
 STR_0771    :Entertainer {INT32}
@@ -1082,7 +1082,7 @@ STR_1696    :Customer information
 STR_1697    :Cannot place these on queue line area
 STR_1698    :Can only place these on queue area
 STR_1699    :Too many people in game
-STR_1700    :Hire new Handyman
+STR_1700    :Hire new Handyperson
 STR_1701    :Hire new Mechanic
 STR_1702    :Hire new Security Guard
 STR_1703    :Hire new Entertainer
@@ -1234,11 +1234,11 @@ STR_1855    :{WINDOW_COLOUR_2}Built: {BLACK}{COMMA16} Years Ago
 STR_1856    :{WINDOW_COLOUR_2}Profit per item sold: {BLACK}{CURRENCY2DP}
 STR_1857    :{WINDOW_COLOUR_2}Loss per item sold: {BLACK}{CURRENCY2DP}
 STR_1858    :{WINDOW_COLOUR_2}Cost: {BLACK}{CURRENCY2DP} per month
-STR_1859    :Handymen
+STR_1859    :Handypeople
 STR_1860    :Mechanics
 STR_1861    :Security Guards
 STR_1862    :Entertainers
-STR_1863    :Handyman
+STR_1863    :Handyperson
 STR_1864    :Mechanic
 STR_1865    :Security Guard
 STR_1866    :Entertainer
@@ -1565,7 +1565,7 @@ STR_2206    :Empty Drink Carton
 STR_2207    :Empty Juice Cup
 STR_2208    :Roast Sausage
 STR_2209    :Empty Bowl
-STR_2210    :Show list of handymen in park
+STR_2210    :Show list of handypeople in park
 STR_2211    :Show list of mechanics in park
 STR_2212    :Show list of security guards in park
 STR_2213    :Show list of entertainers in park
@@ -2003,8 +2003,8 @@ STR_2802    :Map
 STR_2803    :Show these guests highlighted on map
 STR_2804    :Show these staff members highlighted on map
 STR_2805    :Show map of park
-STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handymen are and consider organising them better
-STR_2807    :{RED}Guests are complaining about the amount of litter in your park{NEWLINE}Check where your handymen are and consider organising them better
+STR_2806    :{RED}Guests are complaining about the disgusting state of the paths in your park{NEWLINE}Check where your handypeople are and consider organising them better
+STR_2807    :{RED}Guests are complaining about the amount of litter in your park{NEWLINE}Check where your handypeople are and consider organising them better
 STR_2808    :{RED}Guests are complaining about the vandalism in your park{NEWLINE}Check where your security guards are and consider organising them better
 STR_2809    :{RED}Guests are hungry and can’t find anywhere to buy food
 STR_2810    :{RED}Guests are thirsty and can’t find anywhere to buy drinks

@@ -1234,11 +1234,11 @@ STR_1855    :{WINDOW_COLOUR_2}Built: {BLACK}{COMMA16} Years Ago
 STR_1856    :{WINDOW_COLOUR_2}Profit per item sold: {BLACK}{CURRENCY2DP}
 STR_1857    :{WINDOW_COLOUR_2}Loss per item sold: {BLACK}{CURRENCY2DP}
 STR_1858    :{WINDOW_COLOUR_2}Tốn: {BLACK}{CURRENCY2DP} mỗi tháng
-STR_1859    :Handymen
+STR_1859    :Handypeople
 STR_1860    :Mechanics
 STR_1861    :Security Guards
 STR_1862    :Entertainers
-STR_1863    :Handyman
+STR_1863    :Handyperson
 STR_1864    :Mechanic
 STR_1865    :Security Guard
 STR_1866    :Entertainer
@@ -1566,7 +1566,7 @@ STR_2206    :Empty Drink Carton
 STR_2207    :Empty Juice Cup
 STR_2208    :Roast Sausage
 STR_2209    :Empty Bowl
-STR_2210    :Show list of handymen in park
+STR_2210    :Show list of handypeople in park
 STR_2211    :Show list of mechanics in park
 STR_2212    :Show list of security guards in park
 STR_2213    :Show list of entertainers in park
