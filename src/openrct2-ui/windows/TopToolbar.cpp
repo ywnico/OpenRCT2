@@ -893,9 +893,18 @@ static void WindowTopToolbarPaint(rct_window* w, rct_drawpixelinfo* dpi)
         screenPos = { w->windowPos.x + window_top_toolbar_widgets[WIDX_STAFF].left,
                       w->windowPos.y + window_top_toolbar_widgets[WIDX_STAFF].top };
         imgId = SPR_TOOLBAR_STAFF;
+
+        // Set skintone to that of the first staff member, if there are any staff.
+        uint8_t skintone = 0;
+        for (auto peep : EntityList<Staff>())
+        {
+            skintone = peep->Skintone;
+            break;
+        }
+
         if (WidgetIsPressed(w, WIDX_STAFF))
             imgId++;
-        gfx_draw_sprite(dpi, ImageId(imgId, gStaffHandymanColour, gStaffMechanicColour), screenPos);
+        gfx_draw_sprite(dpi, ImageId(imgId, gStaffHandymanColour, gStaffMechanicColour).WithSkintone(skintone), screenPos);
     }
 
     // Draw fast forward button
