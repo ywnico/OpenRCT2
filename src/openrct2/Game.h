@@ -136,6 +136,8 @@ extern rct_string_id gGameCommandErrorText;
 extern uint32_t gCurrentTicks;
 extern uint32_t gCurrentRealTimeTicks;
 
+extern uint8_t gHandSkintone;
+
 extern uint16_t gCurrentDeltaTime;
 extern uint8_t gGamePaused;
 extern int32_t gGameSpeed;

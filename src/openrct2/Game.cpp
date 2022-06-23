@@ -86,6 +86,8 @@ bool gLoadKeepWindowsOpen = false;
 uint32_t gCurrentTicks;
 uint32_t gCurrentRealTimeTicks;
 
+uint8_t gHandSkintone = 0;
+
 rct_string_id gGameCommandErrorTitle;
 rct_string_id gGameCommandErrorText;
 
@@ -511,6 +513,8 @@ void game_load_init()
     {
         peep->Skintone = static_cast<uint8_t>(scenario_rand() % PEEP_NUM_SKINTONES);
     }
+
+    gHandSkintone = static_cast<uint8_t>(scenario_rand() % PEEP_NUM_SKINTONES);
 }
 
 void game_load_scripts()

@@ -556,8 +556,23 @@ private:
         const auto& widget = widgets[widgetIndex];
         auto imageId = (_selectedTab == tabIndex ? (_tabAnimationIndex & ~3) : 0);
         imageId += GetPeepAnimation(type).base_image + 1;
+
+        uint8_t skintone = 0;
+        for (auto peep : EntityList<Staff>())
+        {
+            if (
+                    ((widgetIndex == WIDX_STAFF_LIST_HANDYMEN_TAB) && (peep->AssignedStaffType == StaffType::Handyman))
+                    || ((widgetIndex == WIDX_STAFF_LIST_MECHANICS_TAB) && (peep->AssignedStaffType == StaffType::Mechanic))
+                    || ((widgetIndex == WIDX_STAFF_LIST_SECURITY_TAB) && (peep->AssignedStaffType == StaffType::Security))
+               )
+            {
+                skintone = peep->Skintone;
+                break;
+            }
+        }
+
         gfx_draw_sprite(
-            &dpi, ImageId(imageId, colour), windowPos + ScreenCoordsXY{ (widget.left + widget.right) / 2, widget.bottom - 6 });
+            &dpi, ImageId(imageId, colour, colour).WithSkintone(skintone), windowPos + ScreenCoordsXY{ (widget.left + widget.right) / 2, widget.bottom - 6 });
     }
 
     void DrawTabImage(rct_drawpixelinfo& dpi, int32_t tabIndex, PeepSpriteType type) const

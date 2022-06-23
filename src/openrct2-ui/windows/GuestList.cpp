@@ -141,6 +141,9 @@ private:
     size_t _numPages{};
     size_t _selectedPage{};
 
+    uint8_t _tab1Skintone;
+    uint8_t _tab2Skintone;
+
     GuestViewType _lastFindGroupsSelectedView{};
     uint32_t _lastFindGroupsTick{};
     uint32_t _lastFindGroupsWait{};
@@ -160,6 +163,8 @@ public:
         _selectedTab = TabId::Summarised;
         _selectedView = GuestViewType::Thoughts;
         _numPages = 1;
+        _tab1Skintone = scenario_rand() % PEEP_NUM_SKINTONES;
+        _tab2Skintone = scenario_rand() % PEEP_NUM_SKINTONES;
         widgets[WIDX_TRACKING].type = WindowWidgetType::FlatBtn;
         widgets[WIDX_FILTER_BY_NAME].type = WindowWidgetType::FlatBtn;
         widgets[WIDX_PAGE_DROPDOWN].type = WindowWidgetType::Empty;
@@ -652,13 +657,13 @@ private:
         i += GetPeepAnimation(PeepSpriteType::Normal).base_image + 1;
         i |= 0xA1600000;
         gfx_draw_sprite(
-            &dpi, ImageId::FromUInt32(i),
+            &dpi, ImageId::FromUInt32(i).WithSkintone(_tab1Skintone),
             windowPos + ScreenCoordsXY{ widgets[WIDX_TAB_1].midX(), widgets[WIDX_TAB_1].bottom - 6 });
 
         // Tab 2 image
         i = (_selectedTab == TabId::Summarised ? _tabAnimationIndex / 4 : 0);
         gfx_draw_sprite(
-            &dpi, ImageId(SPR_TAB_GUESTS_0 + i),
+            &dpi, ImageId(SPR_TAB_GUESTS_0 + i).WithSkintone(_tab2Skintone),
             windowPos + ScreenCoordsXY{ widgets[WIDX_TAB_2].left, widgets[WIDX_TAB_2].top });
     }
 

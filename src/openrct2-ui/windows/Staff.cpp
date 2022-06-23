@@ -956,7 +956,7 @@ void WindowStaffOptionsTabPaint(rct_window* w, rct_drawpixelinfo* dpi)
 
     const auto& widget = w->widgets[WIDX_TAB_2];
     auto screenCoords = w->windowPos + ScreenCoordsXY{ widget.left, widget.top };
-    gfx_draw_sprite(dpi, ImageId(image_id), screenCoords);
+    gfx_draw_sprite(dpi, ImageId(image_id).WithSkintone(gHandSkintone), screenCoords);
 }
 
 /**
