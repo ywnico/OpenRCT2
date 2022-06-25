@@ -25,6 +25,9 @@
 #define SKINTONE_INDEX_NONE 0xFF
 #define SKINTONE_INDEX_GREEN 0x99
 
+#define PALETTE_SKINTONE_START 0x6A
+#define PALETTE_SKINTONE_END 0x75
+
 struct ScreenCoordsXY;
 struct ScreenLine;
 struct ScreenRect;
@@ -334,6 +337,8 @@ struct PaletteMap
 private:
     uint8_t* _data{};
     uint32_t _dataLength{};
+    uint8_t* _skintoneData{};
+    bool _hasSkintone;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-private-field"
     uint16_t _numMaps;
@@ -348,6 +353,7 @@ public:
     PaletteMap(uint8_t* data, uint16_t numMaps, uint16_t mapLength)
         : _data(data)
         , _dataLength(numMaps * mapLength)
+        , _hasSkintone(false)
         , _numMaps(numMaps)
         , _mapLength(mapLength)
     {
@@ -357,6 +363,7 @@ public:
     PaletteMap(uint8_t (&map)[TSize])
         : _data(map)
         , _dataLength(static_cast<uint32_t>(std::size(map)))
+        , _hasSkintone(false)
         , _numMaps(1)
         , _mapLength(static_cast<uint16_t>(std::size(map)))
     {
@@ -364,6 +371,7 @@ public:
 
     uint8_t& operator[](size_t index);
     uint8_t operator[](size_t index) const;
+    void ApplySkintone(uint8_t skintone);
     uint8_t Blend(uint8_t src, uint8_t dst) const;
     void Copy(size_t dstIndex, const PaletteMap& src, size_t srcIndex, size_t length);
 };
@@ -484,12 +492,13 @@ extern GamePalette gPalette;
 extern uint8_t gGamePalette[256 * 4];
 extern uint32_t gPaletteEffectFrame;
 extern const FilterPaletteID GlassPaletteIds[COLOUR_COUNT];
-extern thread_local uint8_t gPeepPalette0[256];
-extern thread_local uint8_t gPeepPalette1[256];
-extern thread_local uint8_t gPeepPalette2[256];
-extern thread_local uint8_t gPeepPalette3[256];
-extern thread_local uint8_t gPeepPalette4[256];
-extern thread_local uint8_t gPeepPaletteGreen[256];
+extern thread_local uint8_t gSkintonePalette0[256];
+extern thread_local uint8_t gSkintonePalette1[256];
+extern thread_local uint8_t gSkintonePalette2[256];
+extern thread_local uint8_t gSkintonePalette3[256];
+extern thread_local uint8_t gSkintonePalette4[256];
+extern thread_local uint8_t gSkintonePaletteGreen[256];
+extern thread_local uint8_t gPeepPalette[256];
 extern thread_local uint8_t gOtherPalette[256];
 extern uint8_t text_palette[];
 extern const translucent_window_palette TranslucentWindowPalettes[COLOUR_COUNT];

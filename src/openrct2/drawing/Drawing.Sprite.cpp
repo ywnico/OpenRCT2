@@ -392,36 +392,24 @@ static std::optional<PaletteMap> FASTCALL gfx_draw_sprite_get_palette(ImageId im
 
     uint8_t skintone = imageId.GetSkintone();
 
-    if ((!imageId.HasSecondary()) && (skintone == SKINTONE_INDEX_NONE))
+    if (!imageId.HasSecondary())
     {
         uint8_t paletteId = imageId.GetRemap();
         if (!imageId.IsBlended())
         {
             paletteId &= 0x7F;
         }
-        return GetPaletteMapForColour(paletteId);
+        std::optional<PaletteMap> paletteMapMaybe = GetPaletteMapForColour(paletteId);
+        if (paletteMapMaybe.has_value())
+        {
+            PaletteMap paletteMap = paletteMapMaybe.value();
+            paletteMap.ApplySkintone(skintone);
+            return paletteMap;
+        }
+        return paletteMapMaybe;
     }
 
-    auto paletteMap = PaletteMap(gOtherPalette);
-    // skin tone
-    if (skintone == 0) {
-        paletteMap = PaletteMap(gPeepPalette0);
-    } else if (skintone == 1) {
-        paletteMap = PaletteMap(gPeepPalette1);
-    } else if (skintone == 2) {
-        paletteMap = PaletteMap(gPeepPalette2);
-    } else if (skintone == 3) {
-        paletteMap = PaletteMap(gPeepPalette3);
-    } else if (skintone == 4) {
-        paletteMap = PaletteMap(gPeepPalette4);
-    } else if (skintone == SKINTONE_INDEX_GREEN) {
-        paletteMap = PaletteMap(gPeepPaletteGreen);
-    }
-
-    if (!imageId.HasSecondary())
-    {
-        return paletteMap;
-    }
+    auto paletteMap = PaletteMap(gPeepPalette);
 
     if (imageId.HasTertiary())
     {
@@ -448,6 +436,7 @@ static std::optional<PaletteMap> FASTCALL gfx_draw_sprite_get_palette(ImageId im
             PALETTE_OFFSET_REMAP_SECONDARY, secondaryPaletteMap.value(), PALETTE_OFFSET_REMAP_PRIMARY, PALETTE_LENGTH_REMAP);
     }
 
+    paletteMap.ApplySkintone(skintone);
     return paletteMap;
 }
 
