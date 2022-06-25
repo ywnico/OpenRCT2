@@ -86,7 +86,7 @@ bool gLoadKeepWindowsOpen = false;
 uint32_t gCurrentTicks;
 uint32_t gCurrentRealTimeTicks;
 
-uint8_t gHandSkintone = 0;
+uint8_t gHandSkintone = SKINTONE_INDEX_DEFAULT;
 
 rct_string_id gGameCommandErrorTitle;
 rct_string_id gGameCommandErrorText;

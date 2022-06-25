@@ -557,7 +557,7 @@ private:
         auto imageId = (_selectedTab == tabIndex ? (_tabAnimationIndex & ~3) : 0);
         imageId += GetPeepAnimation(type).base_image + 1;
 
-        uint8_t skintone = 0;
+        uint8_t skintone = SKINTONE_INDEX_DEFAULT;
         for (auto peep : EntityList<Staff>())
         {
             if (
