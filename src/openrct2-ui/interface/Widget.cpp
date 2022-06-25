@@ -841,7 +841,8 @@ static void WidgetDrawImage(rct_drawpixelinfo* dpi, rct_window* w, rct_widgetind
         else
             image |= colour << 19;
 
-        gfx_draw_sprite(dpi, ImageId::FromUInt32(image), screenCoords);
+        ImageId image_id = ImageId::FromUInt32(image).WithSkintone(widget.skintone);
+        gfx_draw_sprite(dpi, image_id, screenCoords);
     }
 }
 

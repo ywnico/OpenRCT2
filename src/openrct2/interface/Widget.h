@@ -64,7 +64,7 @@ constexpr const ScreenSize TAB_SIZE = { 31, 27 };
 
 constexpr rct_widget MakeWidget(
     const ScreenCoordsXY& origin, const ScreenSize& size, WindowWidgetType type, WindowColour colour,
-    uint32_t content = 0xFFFFFFFF, rct_string_id tooltip = STR_NONE)
+    uint32_t content = 0xFFFFFFFF, rct_string_id tooltip = STR_NONE, uint8_t skintone = SKINTONE_INDEX_NONE)
 {
     rct_widget out = {};
     out.left = origin.x;
@@ -73,6 +73,7 @@ constexpr rct_widget MakeWidget(
     out.bottom = origin.y + size.height - 1;
     out.type = type;
     out.colour = static_cast<uint8_t>(colour);
+    out.skintone = skintone;
     out.content = content;
     out.tooltip = tooltip;
 
@@ -81,19 +82,19 @@ constexpr rct_widget MakeWidget(
 
 constexpr rct_widget MakeRemapWidget(
     const ScreenCoordsXY& origin, const ScreenSize& size, WindowWidgetType type, WindowColour colour,
-    uint32_t content = 0xFFFFFFFF, rct_string_id tooltip = STR_NONE)
+    uint32_t content = 0xFFFFFFFF, rct_string_id tooltip = STR_NONE, uint8_t skintone = SKINTONE_INDEX_NONE)
 {
-    return MakeWidget(origin, size, type, colour, IMAGE_TYPE_REMAP | content, tooltip);
+    return MakeWidget(origin, size, type, colour, IMAGE_TYPE_REMAP | content, tooltip, skintone);
 }
 
-constexpr rct_widget MakeTab(const ScreenCoordsXY& origin, rct_string_id tooltip = STR_NONE)
+constexpr rct_widget MakeTab(const ScreenCoordsXY& origin, rct_string_id tooltip = STR_NONE, uint8_t skintone = SKINTONE_INDEX_NONE)
 {
     const ScreenSize size = TAB_SIZE;
     const WindowWidgetType type = WindowWidgetType::Tab;
     const WindowColour colour = WindowColour::Secondary;
     const uint32_t content = 0xFFFFFFFF;
 
-    return MakeWidget(origin, size, type, colour, content, tooltip);
+    return MakeWidget(origin, size, type, colour, content, tooltip, skintone);
 }
 
 #define MakeSpinnerWidgets(...)                                                                                                \

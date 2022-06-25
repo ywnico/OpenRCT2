@@ -164,7 +164,7 @@ public:
         _selectedView = GuestViewType::Thoughts;
         _numPages = 1;
         _tab1Skintone = scenario_rand() % PEEP_NUM_SKINTONES;
-        _tab2Skintone = scenario_rand() % PEEP_NUM_SKINTONES;
+        _tab2Skintone = 3; // TODO make a new sprite instead
         widgets[WIDX_TRACKING].type = WindowWidgetType::FlatBtn;
         widgets[WIDX_FILTER_BY_NAME].type = WindowWidgetType::FlatBtn;
         widgets[WIDX_PAGE_DROPDOWN].type = WindowWidgetType::Empty;

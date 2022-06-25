@@ -106,6 +106,7 @@ struct rct_widget
     // New properties
     WidgetFlags flags{};
     utf8* sztooltip{};
+    uint8_t skintone = SKINTONE_INDEX_NONE;
 
     int16_t width() const
     {
