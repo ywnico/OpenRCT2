@@ -3954,6 +3954,9 @@ enum : uint16_t
     STR_ERROR_PARK_VERSION_TOO_OLD_MESSAGE = 6492,
     STR_WARNING_PARK_VERSION_MESSAGE = 6493,
 
+    STR_REMOVE_WATER = 6499,
+    STR_SHORTCUT_REMOVE_WATER_TOGGLE = 6500,
+
     // Have to include resource strings (from scenarios and objects) for the time being now that language is partially working
     /* MAX_STR_COUNT = 32768 */ // MAX_STR_COUNT - upper limit for number of strings, not the current count strings
 };

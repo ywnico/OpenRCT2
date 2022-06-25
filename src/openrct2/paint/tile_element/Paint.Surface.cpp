@@ -1333,11 +1333,18 @@ void PaintSurface(paint_session& session, uint8_t direction, uint16_t height, co
 
         const int32_t image_id = (SPR_WATER_MASK + image_offset) | IMAGE_TYPE_REMAP | IMAGE_TYPE_TRANSPARENT
             | EnumValue(FilterPaletteID::PaletteWater) << 19;
-        PaintAddImageAsParent(session, image_id, { 0, 0, waterHeight }, { 32, 32, -1 });
+        if (!(session.ViewFlags & VIEWPORT_FLAG_HIDE_WATER))
+        {
+            PaintAddImageAsParent(session, image_id, { 0, 0, waterHeight }, { 32, 32, -1 });
+        }
 
         const bool transparent = gConfigGeneral.transparent_water || (session.ViewFlags & VIEWPORT_FLAG_UNDERGROUND_INSIDE);
         const uint32_t overlayStart = transparent ? SPR_WATER_OVERLAY : SPR_RCT1_WATER_OVERLAY;
-        PaintAttachToPreviousPS(session, overlayStart + image_offset, 0, 0);
+
+        if (!(session.ViewFlags & VIEWPORT_FLAG_UNDERGROUND_INSIDE) && !(session.ViewFlags & VIEWPORT_FLAG_HIDE_WATER))
+        {
+            PaintAttachToPreviousPS(session, overlayStart + image_offset, 0, 0);
+        }
 
         if (!(session.ViewFlags & VIEWPORT_FLAG_HIDE_VERTICAL))
         {

@@ -134,25 +134,26 @@ enum TopToolbarViewMenuDdidx
     DDIDX_UNDERGROUND_INSIDE = 0,
     DDIDX_TRANSPARENT_WATER = 1,
     DDIDX_HIDE_BASE = 2,
-    DDIDX_HIDE_VERTICAL = 3,
+    DDIDX_HIDE_WATER = 3,
+    DDIDX_HIDE_VERTICAL = 4,
     // separator
-    DDIDX_HIDE_RIDES = 5,
-    DDIDX_HIDE_VEHICLES = 6,
-    DDIDX_HIDE_VEGETATION = 7,
-    DDIDX_HIDE_SCENERY = 8,
-    DDIDX_HIDE_PATHS = 9,
-    DDIDX_HIDE_SUPPORTS = 10,
-    DDIDX_HIDE_GUESTS = 11,
-    DDIDX_HIDE_STAFF = 12,
+    DDIDX_HIDE_RIDES = 6,
+    DDIDX_HIDE_VEHICLES = 7,
+    DDIDX_HIDE_VEGETATION = 8,
+    DDIDX_HIDE_SCENERY = 9,
+    DDIDX_HIDE_PATHS = 10,
+    DDIDX_HIDE_SUPPORTS = 11,
+    DDIDX_HIDE_GUESTS = 12,
+    DDIDX_HIDE_STAFF = 13,
     // separator
-    DDIDX_LAND_HEIGHTS = 14,
-    DDIDX_TRACK_HEIGHTS = 15,
-    DDIDX_PATH_HEIGHTS = 16,
+    DDIDX_LAND_HEIGHTS = 15,
+    DDIDX_TRACK_HEIGHTS = 16,
+    DDIDX_PATH_HEIGHTS = 17,
     // separator
-    DDIDX_VIEW_CLIPPING = 18,
-    DDIDX_HIGHLIGHT_PATH_ISSUES = 19,
+    DDIDX_VIEW_CLIPPING = 19,
+    DDIDX_HIGHLIGHT_PATH_ISSUES = 20,
     // separator
-    DDIDX_TRANSPARENCY = 21,
+    DDIDX_TRANSPARENCY = 22,
 
     TOP_TOOLBAR_VIEW_MENU_COUNT,
 };
@@ -3641,6 +3642,7 @@ static void TopToolbarInitViewMenu(rct_window* w, rct_widget* widget)
         ToggleOption(DDIDX_UNDERGROUND_INSIDE, STR_UNDERGROUND_VIEW),
         ToggleOption(DDIDX_TRANSPARENT_WATER, STR_VIEWPORT_TRANSPARENT_WATER),
         ToggleOption(DDIDX_HIDE_BASE, STR_REMOVE_BASE_LAND),
+        ToggleOption(DDIDX_HIDE_WATER, STR_REMOVE_WATER),
         ToggleOption(DDIDX_HIDE_VERTICAL, STR_REMOVE_VERTICAL_FACES),
         Separator(),
         ToggleOption(DDIDX_HIDE_RIDES, STR_SEE_THROUGH_RIDES),
@@ -3678,6 +3680,8 @@ static void TopToolbarInitViewMenu(rct_window* w, rct_widget* widget)
         Dropdown::SetChecked(DDIDX_TRANSPARENT_WATER, true);
     if (mainViewport->flags & VIEWPORT_FLAG_HIDE_BASE)
         Dropdown::SetChecked(DDIDX_HIDE_BASE, true);
+    if (mainViewport->flags & VIEWPORT_FLAG_HIDE_WATER)
+        Dropdown::SetChecked(DDIDX_HIDE_WATER, true);
     if (mainViewport->flags & VIEWPORT_FLAG_HIDE_VERTICAL)
         Dropdown::SetChecked(DDIDX_HIDE_VERTICAL, true);
     if (mainViewport->flags & VIEWPORT_FLAG_HIDE_RIDES)
@@ -3736,6 +3740,9 @@ static void TopToolbarViewMenuDropdown(int16_t dropdownIndex)
                 break;
             case DDIDX_HIDE_BASE:
                 w->viewport->flags ^= VIEWPORT_FLAG_HIDE_BASE;
+                break;
+            case DDIDX_HIDE_WATER:
+                w->viewport->flags ^= VIEWPORT_FLAG_HIDE_WATER;
                 break;
             case DDIDX_HIDE_VERTICAL:
                 w->viewport->flags ^= VIEWPORT_FLAG_HIDE_VERTICAL;
