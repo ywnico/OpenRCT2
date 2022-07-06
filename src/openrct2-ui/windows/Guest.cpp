@@ -555,7 +555,7 @@ private:
         }
         animationFrame += animationFrameOffset;
 
-        auto spriteId = ImageId(animationFrame, peep->TshirtColour, peep->TrousersColour);
+        auto spriteId = ImageId(animationFrame, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone);
         gfx_draw_sprite(&clipDpi, spriteId, screenCoords);
 
         auto* guest = peep->As<Guest>();
@@ -947,7 +947,7 @@ private:
 
         auto baseImageId = GetPeepAnimation(peep->SpriteType, PeepActionSpriteType::Ui).base_image;
         baseImageId += picked_peep_frame >> 2;
-        gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour);
+        gPickupPeepImage = ImageId(baseImageId, peep->TshirtColour, peep->TrousersColour).WithSkintone(peep->Skintone);
     }
 
     void OnToolDownOverview(rct_widgetindex widgetIndex, const ScreenCoordsXY& screenCoords)
@@ -1019,7 +1019,18 @@ private:
                     break;
             }
         }
-        gfx_draw_sprite(&dpi, ImageId(imageId), screenCoords);
+        ImageId image_id_obj = ImageId(imageId);
+
+        // Use a different palette on sick and angry faces (until the palette is improved).
+        if (is_sick(peep)) {
+            image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_GREEN);
+        } else if (is_angry(peep)) {
+            image_id_obj = image_id_obj.WithSkintone(SKINTONE_INDEX_NONE);
+        } else {
+            image_id_obj = image_id_obj.WithSkintone(peep->Skintone);
+        }
+
+        gfx_draw_sprite(&dpi, image_id_obj, screenCoords);
     }
 
     void OnUpdateStats()
@@ -1527,6 +1538,7 @@ private:
 
         const auto& widget = widgets[WIDX_TAB_5];
         auto screenCoords = windowPos + ScreenCoordsXY{ widget.left, widget.top };
+        auto peep = GetGuest();
 
         int32_t imageId = SPR_TAB_THOUGHTS_0;
 
@@ -1535,7 +1547,7 @@ private:
             imageId += (frame_no / 2) & 0x7;
         }
 
-        gfx_draw_sprite(&dpi, ImageId(imageId), screenCoords);
+        gfx_draw_sprite(&dpi, ImageId(imageId).WithSkintone(peep->Skintone), screenCoords);
     }
 
     void OnUpdateThoughts()
@@ -1609,8 +1621,9 @@ private:
 
         const auto& widget = widgets[WIDX_TAB_6];
         auto screenCoords = windowPos + ScreenCoordsXY{ widget.left, widget.top };
+        auto peep = GetGuest();
 
-        gfx_draw_sprite(&dpi, ImageId(SPR_TAB_GUEST_INVENTORY), screenCoords);
+        gfx_draw_sprite(&dpi, ImageId(SPR_TAB_GUEST_INVENTORY).WithSkintone(peep->Skintone), screenCoords);
     }
 
     void OnUpdateInventory()

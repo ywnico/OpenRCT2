@@ -590,7 +590,7 @@ private:
         }
         imageIndex += offset;
 
-        gfx_draw_sprite(&clip_dpi, ImageId(imageIndex, staff->TshirtColour, staff->TrousersColour), screenCoords);
+        gfx_draw_sprite(&clip_dpi, ImageId(imageIndex, staff->TshirtColour, staff->TrousersColour).WithSkintone(staff->Skintone), screenCoords);
     }
 
     void OverviewResize()
@@ -685,7 +685,7 @@ private:
 
         auto baseImageId = GetPeepAnimation(staff->SpriteType, PeepActionSpriteType::Ui).base_image;
         baseImageId += picked_peep_frame >> 2;
-        gPickupPeepImage = ImageId(baseImageId, staff->TshirtColour, staff->TrousersColour);
+        gPickupPeepImage = ImageId(baseImageId, staff->TshirtColour, staff->TrousersColour).WithSkintone(staff->Skintone);
     }
 
     void OverviewToolDown(rct_widgetindex widgetIndex, const ScreenCoordsXY& screenCoords)
@@ -1226,7 +1226,13 @@ private:
             }
 
             // Draw normal, enabled sprite.
-            gfx_draw_sprite(dpi, ImageId(baseImageId), screenCoords);
+            ImageId image_id_obj = ImageId(baseImageId);
+            if (widgetIndex == WIDX_TAB_2)
+            {
+                image_id_obj = image_id_obj.WithSkintone(gHandSkintone);
+            }
+
+            gfx_draw_sprite(dpi, image_id_obj, screenCoords);
         }
     }
 
