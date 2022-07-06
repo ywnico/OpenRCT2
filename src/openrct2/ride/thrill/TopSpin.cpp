@@ -65,7 +65,7 @@ static void PaintTopSpinSeat(
     if (armRotation >= std::size(TopSpinSeatHeightOffset))
         return;
 
-    const auto& vehicleEntry = rideEntry.vehicles[0];
+    const auto& vehicleEntry = rideEntry.Cars[0];
 
     ImageIndex seatImageIndex;
     if (vehicle != nullptr && vehicle->restraints_position >= 64)
@@ -123,7 +123,7 @@ static void PaintTopSpinVehicle(
     if (rideEntry == nullptr)
         return;
 
-    const auto& vehicleEntry = rideEntry->vehicles[0];
+    const auto& vehicleEntry = rideEntry->Cars[0];
 
     height += 3;
     uint8_t seatRotation = 0;
